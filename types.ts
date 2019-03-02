@@ -9,4 +9,7 @@ export interface IAugmentationConfig {
   randomCrop?: IBox
   rotate?: number
   flip?: boolean
+  blur?: { kernelSize: number, stddev: number }
+  intensity?: { alpha: number, beta: number }
+  toGray?: boolean
 }

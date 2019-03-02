@@ -26,3 +26,17 @@ export function rotate(img: cv.Mat, angle: number) {
 
   return img.warpAffine(rot, new cv.Size(bbox.width, bbox.height))
 }
+
+export function adjustIntensity(img: cv.Mat, alpha: number, beta: number) {
+  const betaMask = new cv.Mat(img.rows, img.cols, img.type, Array(img.channels).fill(Math.abs(beta)))
+  const result = img.mul(alpha)
+  return beta < 0 ? result.sub(betaMask) : result.add(betaMask)
+}
+
+export function toGray(img: cv.Mat) {
+  return img.channels === 3 ? img.cvtColor(cv.COLOR_BGR2GRAY) : img
+}
+
+export function blur(img: cv.Mat, kernelSize: number, stddev: number) {
+  return img.gaussianBlur(new cv.Size(kernelSize, kernelSize), stddev, stddev)
+}
