@@ -1,0 +1,22 @@
+{
+  "name": "image-augment.js",
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "image",
+    "augmentation",
+    "opencv4nodejs"
+  ],
+  "author": "justadudewhohacks",
+  "license": "MIT",
+  "dependencies": {
+    "opencv4nodejs": "^4.14.1"
+  },
+  "devDependencies": {
+    "typescript": "^3.3.3333"
+  }
+}
