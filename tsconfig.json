@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    "removeComments": false,
+    "declaration": true,
+    "importHelpers": true,
+    "outDir": "build",
+    "module": "commonjs",
+    "target": "es5",
+    "moduleResolution": "node",
+    "typeRoots": [
+      "typings",
+      "node_modules/@types"
+    ]
+  },
+  "formatCodeOptions": {
+    "indentSize": 2,
+    "tabSize": 2
+  },
+  "exclude": [
+    "node_modules",
+    "examples"
+  ]
+}
