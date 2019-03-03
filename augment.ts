@@ -1,6 +1,6 @@
 import * as cv from 'opencv4nodejs';
 
-import { adjustIntensity, blur, randomCrop, rotate, toGray } from './imgproc';
+import { adjustIntensity, blur, padToSquare, randomCrop, rotate, toGray } from './imgproc';
 import { IAugmentationConfig, IBox } from './types';
 
 export function augment(input: cv.Mat | string, config: IAugmentationConfig): cv.Mat {
@@ -26,6 +26,10 @@ export function augment(input: cv.Mat | string, config: IAugmentationConfig): cv
   // TODO shearing
   img = config.flip ? img.flip(1) : img
   img = typeof angle === 'number' ? rotate(img, angle) : img
+
+  const maxDim = config.resize
+  img = typeof maxDim === 'number' ? img.resizeToMax(maxDim) : img
+  img = config.toSquare ? padToSquare(img, config.toSquare.centerContent) : img
 
   return img
 }

@@ -5,3 +5,4 @@ export declare function rotate(img: cv.Mat, angle: number): cv.Mat;
 export declare function adjustIntensity(img: cv.Mat, alpha: number, beta: number): cv.Mat;
 export declare function toGray(img: cv.Mat): cv.Mat;
 export declare function blur(img: cv.Mat, kernelSize: number, stddev: number): cv.Mat;
+export declare function padToSquare(img: cv.Mat, centerContent: boolean): cv.Mat;

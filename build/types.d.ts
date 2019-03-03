@@ -17,4 +17,8 @@ export interface IAugmentationConfig {
         beta: number;
     };
     toGray?: boolean;
+    resize?: number;
+    toSquare?: {
+        centerContent: boolean;
+    };
 }

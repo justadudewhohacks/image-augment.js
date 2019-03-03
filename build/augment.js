@@ -19,6 +19,9 @@ function augment(input, config) {
     // TODO shearing
     img = config.flip ? img.flip(1) : img;
     img = typeof angle === 'number' ? imgproc_1.rotate(img, angle) : img;
+    var maxDim = config.resize;
+    img = typeof maxDim === 'number' ? img.resizeToMax(maxDim) : img;
+    img = config.toSquare ? imgproc_1.padToSquare(img, config.toSquare.centerContent) : img;
     return img;
 }
 exports.augment = augment;

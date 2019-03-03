@@ -36,3 +36,12 @@ function blur(img, kernelSize, stddev) {
     return img.gaussianBlur(new cv.Size(kernelSize, kernelSize), stddev, stddev);
 }
 exports.blur = blur;
+function padToSquare(img, centerContent) {
+    var maxDim = Math.max(img.rows, img.cols);
+    var square = new cv.Mat(maxDim, maxDim, img.type, Array(img.channels).fill(Math.abs(0)));
+    var dx = centerContent ? Math.abs(square.cols - img.cols) / 2 : 0;
+    var dy = centerContent ? Math.abs(square.rows - img.rows) / 2 : 0;
+    img.copyTo(square.getRegion(new cv.Rect(dx, dy, img.cols, img.rows)));
+    return square;
+}
+exports.padToSquare = padToSquare;

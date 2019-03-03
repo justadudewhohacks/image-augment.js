@@ -40,3 +40,14 @@ export function toGray(img: cv.Mat) {
 export function blur(img: cv.Mat, kernelSize: number, stddev: number) {
   return img.gaussianBlur(new cv.Size(kernelSize, kernelSize), stddev, stddev)
 }
+
+export function padToSquare(img: cv.Mat, centerContent: boolean) {
+  const maxDim = Math.max(img.rows, img.cols)
+  const square = new cv.Mat(maxDim, maxDim, img.type, Array(img.channels).fill(Math.abs(0)))
+
+  const dx = centerContent ? Math.abs(square.cols - img.cols) / 2 : 0
+  const dy = centerContent ? Math.abs(square.rows - img.rows) / 2 : 0
+  img.copyTo(square.getRegion(new cv.Rect(dx, dy, img.cols, img.rows)))
+
+  return square
+}

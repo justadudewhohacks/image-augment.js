@@ -12,4 +12,6 @@ export interface IAugmentationConfig {
   blur?: { kernelSize: number, stddev: number }
   intensity?: { alpha: number, beta: number }
   toGray?: boolean
+  resize?: number
+  toSquare?: { centerContent: boolean }
 }
